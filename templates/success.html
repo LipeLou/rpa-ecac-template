@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EFD-REINF - Declaração Enviada</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        
+        .title {
+            color: #1e3c72;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .info-box {
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .info-label {
+            font-weight: bold;
+            color: #1e3c72;
+        }
+        
+        .info-value {
+            color: #666;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 10px rgba(30, 60, 114, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+        }
+        
+        .btn-success {
+            background: #28a745;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">✅</div>
+        
+        <h1 class="title">Declaração Enviada com Sucesso!</h1>
+        
+        <p class="subtitle">
+            Sua declaração EFD-REINF foi processada e enviada para a Receita Federal. 
+            Você receberá um comprovante por email em breve.
+        </p>
+        
+        <div class="info-box">
+            <div class="info-item">
+                <span class="info-label">Protocolo:</span>
+                <span class="info-value" id="protocolo">EFD-REINF-2024-001</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Data de Envio:</span>
+                <span class="info-value" id="dataEnvio"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Status:</span>
+                <span class="info-value" style="color: #28a745; font-weight: bold;">Processada</span>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <a href="/formulario" class="btn">Nova Declaração</a>
+            <a href="/visualizar_efd" class="btn btn-secondary">Ver Declarações</a>
+            <a href="/" class="btn btn-success">Voltar ao Menu</a>
+        </div>
+        
+        <div class="footer">
+            <p>© 2024 Receita Federal do Brasil - Sistema EFD-REINF</p>
+            <p>Em caso de dúvidas, entre em contato através do e-CAC</p>
+        </div>
+    </div>
+    
+    <script>
+        // Definir data atual
+        document.addEventListener('DOMContentLoaded', function() {
+            const agora = new Date();
+            const dataFormatada = agora.toLocaleDateString('pt-BR') + ' às ' + agora.toLocaleTimeString('pt-BR');
+            document.getElementById('dataEnvio').textContent = dataFormatada;
+            
+            // Gerar protocolo único
+            const protocolo = 'EFD-REINF-' + agora.getFullYear() + '-' + String(agora.getTime()).slice(-6);
+            document.getElementById('protocolo').textContent = protocolo;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+__pycache__/
+*.py[cod]
+
+# Ambiente virtual usado no projeto
+venv/
+
+# Banco de dados local
+cadastros.db
